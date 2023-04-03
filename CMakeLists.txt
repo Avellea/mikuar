@@ -8,7 +8,7 @@ if(NOT DEFINED CMAKE_TOOLCHAIN_FILE)
   endif()
 endif()
 
-project(miku_ar)
+project(mikuar)
 include("${VITASDK}/share/vita.cmake" REQUIRED)
 
 set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -Wl,-q -Wall -O3 -fno-inline")
@@ -23,22 +23,23 @@ link_directories(
   ${CMAKE_CURRENT_BINARY_DIR}
 )
 
-add_executable(miku_ar
+add_executable(mikuar
   src/main.c
 )
 
-target_link_libraries(miku_ar
+target_link_libraries(mikuar
+  taihen_stub
   SceLibKernel_stub
   # SceKernelModuleMgr_stub
   SceRtc_stub 
-  taihen_stub
+  
 )
 
-set_target_properties(miku_ar
+set_target_properties(mikuar
   PROPERTIES LINK_FLAGS "-nostdlib"
 )
 
-vita_create_self(miku_ar.suprx miku_ar
+vita_create_self(mikuar.suprx mikuar
   CONFIG exports.yml
   UNSAFE
 )

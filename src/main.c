@@ -2,42 +2,42 @@
 #include <psp2/kernel/modulemgr.h>
 #include <psp2/rtc.h> 
 
-// #include <time.h>
-
 #include <taihen.h>
 
 #define printf sceClibPrintf
 
-// handle to our hook
+
 static tai_hook_ref_t app_start_ref;
-// our hook for app entry
 
 SceUID gHook = -1;
 
 
-int fakeSystemDateTime() {
-  printf("[MikuAR] Hooked! Faking date...\n");
-  return TAI_CONTINUE(int, app_start_ref);
+int fakeSystemDateTime(int *t) {
+  static int offset = 0;
+  int desiredTime = 1374021000; // 13 July 2013, 19:30
+  int ret = TAI_CONTINUE(int, app_start_ref, t);
+  if (!offset) {
+    offset = ret - desiredTime;
+  }
+  if (t != NULL)
+    *t = ret - offset;
+  return ret - offset;
 }
-
-
 
 void _start() __attribute__ ((weak, alias ("module_start")));
 int module_start(SceSize argc, const void *args) {
-  printf("[MikuAR] module_start - gHook = %d\n", gHook);
-  gHook = taiHookFunctionImport(
+  gHook = taiHookFunctionExport(
     &app_start_ref,
-    "SegaMiku",
-    // TAI_ANY_LIBRARY,
-    0x3503487E, // SceRtc
-    0x41A6C861, // _sceRtcGetCurrentClockLocalTime
+    "SceLibc",
+    0xBE43BB07, // SceLibc
+    0xDAE8D60F, // time
     &fakeSystemDateTime
   );
-  printf("[MikuAR] gHook post = %d\n", gHook);
-  return SCE_KERNEL_START_SUCCESS;
-  
-}
 
+  printf("[MikuAR] gHook post = %08x\n", gHook);
+
+  return SCE_KERNEL_START_SUCCESS;
+}
 
 int module_stop(SceSize argc, const void *args){
   printf("[MikuAR] module_stop\n");
