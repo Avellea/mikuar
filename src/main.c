@@ -33,9 +33,7 @@ int module_start(SceSize argc, const void *args) {
     0xDAE8D60F, // time
     &fakeSystemDateTime
   );
-
   printf("[MikuAR] gHook post = %08x\n", gHook);
-
   return SCE_KERNEL_START_SUCCESS;
 }
 

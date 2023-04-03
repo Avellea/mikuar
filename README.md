@@ -12,6 +12,13 @@ $ cmake ../
 $ make
 ```
 
+# Installing
+Place the following at the bottom of `ur0:tai/config.txt`
+```
+*PCSC90032
+ur0:tai/mikuar.suprx
+```
+
 # Credits
 [SonicMastr](https://github.com/SonicMastr) - Help with development
 
