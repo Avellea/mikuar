@@ -13,13 +13,14 @@ $ make
 ```
 
 # Installing
-This requires a specific image for the AR to work. I'll update this when I find a good image.
-
 Place the following at the bottom of `ur0:tai/config.txt`
 ```
 *PCSC90032
 ur0:tai/mikuar.suprx
 ```
+
+# Image
+![Image](https://raw.githubusercontent.com/Avellea/mikuar/main/AR.png)
 
 # Credits
 [SonicMastr](https://github.com/SonicMastr) - Help with development
