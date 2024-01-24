@@ -23,7 +23,6 @@ ur0:tai/mikuar.suprx
 ![Image](https://raw.githubusercontent.com/Avellea/mikuar/main/AR.png)
 
 # Credits
-[SonicMastr](https://github.com/SonicMastr) - Help with development
 
 [isage](https://github.com/isage) - Fix mysterious bug (Still want an explanation lol)
 
