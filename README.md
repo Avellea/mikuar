@@ -25,4 +25,6 @@ ur0:tai/mikuar.suprx
 # Credits
 [SonicMastr](https://github.com/SonicMastr) - Help with development
 
+[isage](https://github.com/isage) - Fix mysterious bug (Still want an explanation lol)
+
 [Null-39](https://github.com/Null-39) - Testing
