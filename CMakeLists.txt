@@ -29,8 +29,9 @@ add_executable(mikuar
 
 target_link_libraries(mikuar
   taihen_stub
+  SceAppUtil_stub 
   SceLibKernel_stub
-  # SceKernelModuleMgr_stub
+  # SceModulemgrForKernel_stub
   SceRtc_stub 
   
 )
